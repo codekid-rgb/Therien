@@ -62,18 +62,22 @@
    swww
    alacritty
    rofi-wayland
+   polkit
    firefox
    ];
+
+  # Import the Hyprland settings from ./hyprland/hyprland.nix
+  wayland.windowManager.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+    settings = import ./hyprland/hyprland.nix;
+      
+    };
+
 
    xdg.portal.enable = true;
    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-   wayland.windowManager.hyprland = {
-   #allow home manager to configer hyprland
-   enable = true;
-   settings = import ~/configs/home-manager/hyprland/hyprland.nix;
-   xwayland.enable = true;
-   };
 
 
   # Enable home-manager and git
