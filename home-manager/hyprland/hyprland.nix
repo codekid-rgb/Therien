@@ -1,6 +1,6 @@
 {
 
-   exec-once = "../startup.h";
+   exec-once = "../startup.sh";
    decoration = {
         "shadow_offset" = "0 5";
 	"col.shadow" = "rgba(00000099)";
@@ -18,7 +18,7 @@
      "$mod, Backspace, killactive"
      ];
      monitor = [
-     "DP-1, 2560x1600@60, 0x0, 1"
-     "DP-2, 3840x2160@60, 2560x0, 1"
+     "DP-0, 2560x1600@59.9, 0x0, 1"
+     "DP-1, 3840x2160@59.9, auto-left, 1"
      ];
    }
