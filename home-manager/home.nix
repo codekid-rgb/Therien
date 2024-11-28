@@ -45,15 +45,48 @@
     };
   };
 
-  # TODO: Set your username
   home = {
-    username = "your-username";
-    homeDirectory = "/home/your-username";
+    username = "eugene";
+    homeDirectory = "/home/eugene";
   };
 
   # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
+  programs.neovim.enable = true;
+   home.packages = with pkgs; [ 
+   element-desktop
+   discord
+   helix
+   kitty
+   dunst
+   libnotify
+   swww
+   alacritty
+   rofi-wayland
+   firefox
+   ];
+
+   xdg.portal.enable = true;
+   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+   wayland.windowManager.hyprland = {
+   #allow home manager to configer hyprland
+   enable = true;
+   xwayland.enable = true;
+
+   settings = {
+    decoration = {
+        shadow_offset = "0 5";
+	"col.shadow" = "rgba(00000099)";
+     };
+     "$mod" = "SUPER";
+
+     bindm = [
+     "$mod, mouse:272, movewindow"
+     "$mod, mouse:273, resizewindow"
+     "$mod ALT, mouse:272, resizewindow"
+     ];
+    };
+   };
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
@@ -63,5 +96,5 @@
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "23.05";
+  home.stateVersion = "24.05";
 }

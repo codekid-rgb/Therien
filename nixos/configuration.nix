@@ -22,6 +22,8 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
+    # Import home-manager's NixOS module
+    inputs.home-manager.nixosModules.home-manager
   ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -29,6 +31,10 @@
 
   networking.hostName = "Therien"; # Define your hostname.
 
+
+  environment.sessionVariables = {
+  NIXOS_OZONE_WL = "1";
+  };
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -38,6 +44,10 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
+
+  #Hyprland enable and package set
+  programs.hyprland.enable = true;
+  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -52,6 +62,15 @@
     variant = "";
   };
 
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = {
+      # Import your home-manager configuration
+      eugene = import ../home-manager/home.nix;
+    };
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -64,7 +83,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
     };
 
 
@@ -113,8 +132,6 @@
   };
 
   # FIXME: Add the rest of your current configuration
-   Enable the OpenSSH daemon.
-   services.openssh.enable = true;
    programs.steam.enable = true;
    programs.firefox.enable = true;
 
@@ -122,24 +139,31 @@
 
   environment.systemPackages = with pkgs; [
   vim
+  waybar
+  (waybar.overrideAttrs (oldAttrs: {
+     MesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+   })
+  )
+  inputs.home-manager.packages.${system}.default 
   neovim
   ripgrep
   alacritty
   git
   firefox
+  gnumake
   steam
   openrgb
   ];
 
 
-  users.uses = {
+  users.users = {
     eugene = {
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       extraGroups = ["wheel" "networkmanager"];
-      description = "Eugene Lord"
+      description = "Eugene Lord";
     };
   };
 
@@ -154,6 +178,47 @@
       # Remove if you want to SSH using passwords
       PasswordAuthentication = false;
     };
+  };
+
+
+  # Enable OpenGL
+  hardware.opengl = {
+    enable = true;
+  };
+
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = ["nvidia"];
+
+  hardware.nvidia = {
+
+    # Modesetting is required.
+    modesetting.enable = true;
+
+    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+    # Enable this if you have graphical corruption issues or application crashes after waking
+    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
+    # of just the bare essentials.
+    powerManagement.enable = false;
+
+    # Fine-grained power management. Turns off GPU when not in use.
+    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+    powerManagement.finegrained = false;
+
+    # Use the NVidia open source kernel module (not to be confused with the
+    # independent third-party "nouveau" open source driver).
+    # Support is limited to the Turing and later architectures. Full list of 
+    # supported GPUs is at: 
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+    # Only available from driver 515.43.04+
+    # Currently alpha-quality/buggy, so false is currently the recommended setting.
+    open = false;
+
+    # Enable the Nvidia settings menu,
+	# accessible via `nvidia-settings`.
+    nvidiaSettings = true;
+
+    # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
