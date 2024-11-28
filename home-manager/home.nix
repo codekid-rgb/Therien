@@ -71,22 +71,10 @@
    wayland.windowManager.hyprland = {
    #allow home manager to configer hyprland
    enable = true;
+   settings = import ~/configs/home-manager/hyprland/hyprland.nix;
    xwayland.enable = true;
-
-   settings = {
-    decoration = {
-        shadow_offset = "0 5";
-	"col.shadow" = "rgba(00000099)";
-     };
-     "$mod" = "SUPER";
-
-     bindm = [
-     "$mod, mouse:272, movewindow"
-     "$mod, mouse:273, resizewindow"
-     "$mod ALT, mouse:272, resizewindow"
-     ];
-    };
    };
+
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
