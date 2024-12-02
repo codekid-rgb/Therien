@@ -58,11 +58,15 @@
    helix
    kitty
    dunst
+   wayland-protocols
+   nerdfonts
    libnotify
    swww
    alacritty
    rofi-wayland
    polkit
+   prismlauncher
+   jdk21
    firefox
    ];
 
@@ -70,7 +74,14 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    settings = import ./hyprland/hyprland.nix;
+    settings = import ./desktop/hyprland.nix;
+      
+    };
+
+#waybar
+  programs.waybar = {
+    enable = true;
+    settings = import ./desktop/waybar.nix;
       
     };
 
