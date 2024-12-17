@@ -1,6 +1,6 @@
 {
 
-   exec-once = "waybar & swww init & swww img ~/wallpaper/wallpaper.png";
+   exec-once = "waybar & swww init & swww img ~/wallpaper/wallpaper.png & openrgb --startminimized";
    general = {
     "gaps_in" = "5";
     "gaps_out" = "20";
@@ -41,7 +41,7 @@
        "$mod, right, movefocus, r"
        "$mod, up, movefocus, u"
        "$mod, down, movefocus, d"
-       "$mod, l, exec, systemctl suspend"
+       "$mod, l, exec, hyprlock"
        # Switch workspaces with mainMod + [0-9]
 	"$mod, 1, workspace, 1"
 	"$mod, 2, workspace, 2"
@@ -65,8 +65,9 @@
         "$mod SHIFT, 0, movetoworkspace, 10"
      ];
      monitor = [
-     "HDMI-A-1, highrr, 2560x0, 1"
-     "DVI-D-1, 2560x1600@59.86000, 0x0, 1"
+     "HDMI-A-2, highrr, 0x0, 1"
+     "HDMI-A-1, highrr, 0x0, 1"
+     "DVI-D-1, 2560x1600@59.86000, auto-left, 1"
      "Unknown-1, disable"
      ];
    }

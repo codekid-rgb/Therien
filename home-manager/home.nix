@@ -56,37 +56,29 @@
    element-desktop
    discord
    helix
+   killall
    kitty
+   gimp
    dunst
    wayland-protocols
    nerdfonts
    libnotify
+   davinci-resolve
    swww
    alacritty
+  htop
+  btop
    rofi-wayland
+  hyprlock
+  _1password-gui
+   glfw3
+   wl-color-picker
    polkit
    prismlauncher
+   openrgb-with-all-plugins
    jdk21
    firefox
-    # support both 32-bit and 64-bit applications
-    wineWowPackages.stable
-
-    # support 32-bit only
-    wine
-
-    # support 64-bit only
-    (wine.override { wineBuild = "wine64"; })
-
-    # support 64-bit only
-    wine64
-
-    # wine-staging (version with experimental features)
-    wineWowPackages.staging
-
-    # winetricks (all versions)
-    winetricks
-
-    # native wayland support (unstable)
+   patool
     wineWowPackages.waylandFull
    ];
 
@@ -104,6 +96,23 @@
     settings = import ./desktop/waybar.nix;
       
     };
+
+    programs.helix = {
+      settings = {
+  theme = "onedarker";
+  editor = {
+    line-number = "relative";
+    lsp.display-messages = true;
+  };
+  keys.normal = {
+    space.space = "file_picker";
+    space.w = ":w";
+    space.q = ":q";
+    esc = [ "collapse_selection" "keep_primary_selection" ];
+    };
+  };
+};
+
 
 
    xdg.portal.enable = true;
