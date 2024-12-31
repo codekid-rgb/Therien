@@ -52,7 +52,7 @@
 
   # Add stuff for your user as you see fit:
   programs.neovim.enable = true;
-   home.packages = with pkgs; [ 
+   home.packages = with pkgs; [
    element-desktop
    discord
    helix
@@ -62,17 +62,14 @@
    curl
    dunst
    p2pool
-   kdePackages.falkon
   monero-cli
   gthumb
-  zed-editor
   monero-gui
    wayland-protocols
    nerdfonts
    libnotify
    davinci-resolve
    swww
-   alacritty
   htop
   btop
    rofi-wayland
@@ -95,15 +92,22 @@
     enable = true;
     xwayland.enable = true;
     settings = import ./desktop/hyprland.nix;
-      
+
     };
 
 #waybar
   programs.waybar = {
     enable = true;
     settings = import ./desktop/waybar.nix;
-      
+
     };
+ programs.zed-editor = {
+   enable = true;
+   extensions = ["nix" "xy-zed" "wakatime"];
+   userSettings = {
+     vim_mode = true;
+     };
+   };
 
     programs.helix = {
       settings = {
