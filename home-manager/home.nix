@@ -59,7 +59,14 @@
    killall
    kitty
    gimp
+   curl
    dunst
+   p2pool
+   kdePackages.falkon
+  monero-cli
+  gthumb
+  zed-editor
+  monero-gui
    wayland-protocols
    nerdfonts
    libnotify
@@ -71,6 +78,7 @@
    rofi-wayland
   hyprlock
   _1password-gui
+  darktable
    glfw3
    wl-color-picker
    polkit

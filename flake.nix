@@ -13,6 +13,11 @@
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    #ghostty
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
+
     #Hyprland
     hyprland.url = "github:hyprwm/Hyprland";
   };
@@ -20,6 +25,7 @@
   outputs = {
     self,
     nixpkgs,
+    ghostty,
     home-manager,
     ...
   } @ inputs: let
@@ -50,6 +56,7 @@
     nixosModules = import ./modules/nixos;
     # Reusable home-manager modules you might want to export
     # These are usually stuff you would upstream into home-manager
+
     homeManagerModules = import ./modules/home-manager;
 
     # NixOS configuration entrypoint
@@ -60,6 +67,11 @@
         modules = [
           # > Our main nixos configuration file <
           ./nixos/configuration.nix
+	  {
+          environment.systemPackages = [
+            ghostty.packages.x86_64-linux.default
+          ];
+        }
        ];
      };
    };

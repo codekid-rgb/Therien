@@ -146,6 +146,8 @@
   # FIXME: Add the rest of your current configuration
    programs.steam.enable = true;
    programs.firefox.enable = true;
+  services.usbmuxd.enable = true;
+
 
 
 
@@ -159,6 +161,8 @@
   inputs.home-manager.packages.${system}.default 
   neovim
   ripgrep
+  libimobiledevice
+  ifuse
   alacritty
   git
   firefox
