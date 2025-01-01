@@ -164,6 +164,8 @@
   ripgrep
   libimobiledevice
   ifuse
+  wakatime-cli
+  wakapi
   alacritty
   git
   firefox

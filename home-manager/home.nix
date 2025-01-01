@@ -75,6 +75,7 @@
    rofi-wayland
   hyprlock
   _1password-gui
+  vscode
   darktable
    glfw3
    wl-color-picker

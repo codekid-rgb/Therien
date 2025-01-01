@@ -31,8 +31,12 @@
      "$mod, mouse:273, resizewindow"
      "$mod ALT, mouse:272, resizewindow"
      ];
+     bindel = [
+    ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+    ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+     ];
      bind = [
-     "$mod, Return, exec, alacritty"
+     "$mod, Return, exec, ghostty"
      "$mod, p, exec, rofi -show run"
      "$mod, Backspace, killactive"
        "$mod, left, movefocus, l"
@@ -60,7 +64,8 @@
 	"$mod SHIFT, 7, movetoworkspace, 7"
 	"$mod SHIFT, 8, movetoworkspace, 8"
 	"$mod SHIFT, 9, movetoworkspace, 9"
-        "$mod SHIFT, 0, movetoworkspace, 10"
+  "$mod SHIFT, 0, movetoworkspace, 10"
+  "$mod, f, fullscreen"
      ];
      monitor = [
      "HDMI-A-2, highrr, 0x0, 1"
