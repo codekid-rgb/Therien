@@ -102,13 +102,11 @@
     settings = import ./desktop/waybar.nix;
 
     };
- programs.zed-editor = {
-   enable = true;
-   extensions = ["nix" "xy-zed" "wakatime"];
-   userSettings = {
-     vim_mode = true;
-     };
-   };
+    programs.vscode = {
+  enable = true;
+  package = pkgs.vscodium.fhs;
+};
+
 
     programs.helix = {
       settings = {

@@ -62,6 +62,9 @@
     variant = "";
   };
 
+  environment.variables.EDITOR = "nvim";
+
+
 
   services.hardware.openrgb = {
   enable = true;
