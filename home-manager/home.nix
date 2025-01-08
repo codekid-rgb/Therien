@@ -32,6 +32,7 @@
     curl
     darktable
     davinci-resolve
+    nodejs_22
     discord
     dunst
     element-desktop
@@ -42,9 +43,12 @@
     helix
     htop
     hyprlock
+    xiphos
     jdk21
+    corepack_22
     killall
     kitty
+    image-roll
     libnotify
     monero-cli
     monero-gui
@@ -68,6 +72,8 @@
     xwayland.enable = true;
     settings = import ./desktop/hyprland.nix;
   };
+
+
 
   # Programs
   programs = {

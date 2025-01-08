@@ -68,8 +68,8 @@
   "$mod, f, fullscreen"
      ];
      monitor = [
-     "HDMI-A-2, highrr, 0x0, 1"
-     "HDMI-A-1, highrr, 0x0, 1"
+     "DP-2, highrr, 0x0, 1"
+     "DP-1, highrr, 0x0, 1"
      "DVI-D-1, 2560x1600@59.86000, auto-left, 1"
      "Unknown-1, disable"
      ];

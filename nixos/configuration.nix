@@ -42,6 +42,11 @@
   # Set your time zone.
   time.timeZone = "America/Edmonton";
 
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  services.blueman.enable = true;
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
 
