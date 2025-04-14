@@ -50,6 +50,14 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
 
+ swapDevices = [
+  {
+    device = "/swapfile";
+    size = 50000;  # 50GB in MB
+  }
+]; 
+
+
   #Hyprland enable and package set
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
@@ -162,6 +170,7 @@
 
   environment.systemPackages = with pkgs; [
   vim
+  python311
   waybar
   (waybar.overrideAttrs (oldAttrs: {
      MesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
@@ -212,6 +221,10 @@
   hardware.graphics = {
     enable = true;
   };
+  nixpkgs.config.cudaSupport = true;
+
+hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
@@ -244,8 +257,6 @@
 	# accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

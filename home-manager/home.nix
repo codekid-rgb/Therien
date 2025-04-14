@@ -43,7 +43,12 @@
     helix
     htop
     hyprlock
+    godot_4
     xiphos
+    makehuman
+    blender
+    python311
+    gcc
     jdk21
     corepack_22
     killall
@@ -51,10 +56,12 @@
     image-roll
     libnotify
     monero-cli
+    upscayl
     monero-gui
     nerdfonts
     openrgb-with-all-plugins
     p2pool
+    obs-studio
     patool
     polkit
     prismlauncher
