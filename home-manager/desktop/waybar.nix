@@ -4,8 +4,10 @@
     position = "top";
     height = 30;
     output = [
-      "DVI-D-1"
       "DP-1"
+      "Unknown-2"
+      "HDMI-A-1"
+      "HDMI-A-2"
       "DP-2"
     ];
     modules-left = [ "hyprland/workspaces" "tray"];

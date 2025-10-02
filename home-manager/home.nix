@@ -40,6 +40,7 @@
     gimp
     glfw3
     gthumb
+    hyprshot    
     helix
     htop
     hyprlock
@@ -48,11 +49,21 @@
     makehuman
     blender
     python311
+    python311Packages.pip
     gcc
+    protonup-qt
     jdk21
+    libreoffice-qt6-still
     corepack_22
     killall
     kitty
+    #gtkpod
+    libgpod
+    strawberry
+    libusb1
+    rhythmbox
+    amarok
+    usbutils
     image-roll
     libnotify
     monero-cli

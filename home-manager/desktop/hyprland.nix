@@ -39,6 +39,7 @@
      "$mod, Return, exec, ghostty"
      "$mod, p, exec, rofi -show run"
      "$mod, Backspace, killactive"
+     "$mod, s, exec, hyprshot -m region"
        "$mod, left, movefocus, l"
        "$mod, right, movefocus, r"
        "$mod, up, movefocus, u"
@@ -69,8 +70,9 @@
      ];
      monitor = [
      "DP-2, highrr, 0x0, 1"
+     "Unknown-2, highrr, 0x0, 1"
      "DP-1, highrr, 0x0, 1"
-     "DVI-D-1, 2560x1600@59.86000, auto-left, 1"
+     "HDMI-A-2, highrr, 2560x0, 1 "
      "Unknown-1, disable"
      ];
    }
